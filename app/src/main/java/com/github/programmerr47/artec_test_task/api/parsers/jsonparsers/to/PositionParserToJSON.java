@@ -1,4 +1,4 @@
-package com.github.programmerr47.artec_test_task.api.parsers.jsonparsers;
+package com.github.programmerr47.artec_test_task.api.parsers.jsonparsers.to;
 
 import com.github.programmerr47.artec_test_task.api.objects.Position;
 

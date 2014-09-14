@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="@dimen/icon_default_size"
         android:layout_height="@dimen/icon_default_size"
-        android:layout_margin="@dimen/margin_default"
+        android:layout_margin="@dimen/margin_default_half"
         android:scaleType="fitXY"
         android:src="@drawable/ic_shop"/>
 
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_small"
             android:text="@string/SHOP_NAME"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_small"
             android:text="ul. Len. Sloboda d.19"
-            android:textSize="18sp"/>
+            android:textSize="16sp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/margin_default_half"
                 android:text="Pn-Pt (09:00-22:00)"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="@color/gray_dark_very_transparent_semi"/>
 
         </LinearLayout>
@@ -70,6 +70,7 @@
         android:layout_marginTop="@dimen/margin_default"
         android:layout_marginRight="@dimen/margin_default_half"
         android:text="@string/DISTANCE"
+        android:gravity="right"
         android:textColor="@color/gray_dark_very_transparent_semi"
         android:textSize="18sp"/>
 

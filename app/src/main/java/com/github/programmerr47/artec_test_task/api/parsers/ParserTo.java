@@ -11,7 +11,7 @@ import java.util.List;
  * @author Michael Spitsin
  * @since 2014-09-13
  */
-public interface ParserTo<Obj extends RequestObject, Result> {
-    Result parseFromObject(Obj requestObject);
-    Result parseFromList(List<Obj> requestObjects);
+public interface ParserTo<Obj extends RequestObject, ObjectTag, ArrayTag> {
+    ObjectTag parseFromObject(Obj requestObject);
+    ArrayTag parseFromList(List<Obj> requestObjects);
 }

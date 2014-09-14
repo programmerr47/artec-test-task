@@ -7,13 +7,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.github.programmerr47.artec_test_task.R;
-import com.github.programmerr47.artec_test_task.api.objects.Shop;
+import com.github.programmerr47.artec_test_task.api.objects.Location;
+import com.github.programmerr47.artec_test_task.api.objects.Position;
+import com.github.programmerr47.artec_test_task.representation.utils.Util;
 
 import java.util.List;
 
 /**
- * Simple realisation of {@link BindBaseAdapter} sharpened on flights.
- * Uses {@link com.github.programmerr47.artec_test_task.api.objects.Shop}
+ * Simple realisation of {@link BindBaseAdapter} sharpened on shops.
+ * Uses {@link com.github.programmerr47.artec_test_task.api.objects.Location}
  * as items of list.
  *
  * @author Michael Spitsin
@@ -23,9 +25,10 @@ public class ShopsAdapter extends BindBaseAdapter {
     private static final int FLIGHT_ITEM_ID = R.layout.shop_item;
 
     private Context mContext;
-    private List<Shop> mItems;
+    private List<Location> mItems;
+    private Position mUserLocation;
 
-    public ShopsAdapter(Context context, List<Shop> items) {
+    public ShopsAdapter(Context context, List<Location> items, Position userLocation) {
         if (context == null) {
             throw new IllegalArgumentException("Context must be not null");
         }
@@ -36,6 +39,7 @@ public class ShopsAdapter extends BindBaseAdapter {
 
         mContext = context;
         mItems = items;
+        mUserLocation = userLocation;
     }
 
     @Override
@@ -56,11 +60,29 @@ public class ShopsAdapter extends BindBaseAdapter {
     @Override
     protected void bindView(View view, int position) {
         ViewHolder holder = (ViewHolder) view.getTag();
-        Shop shop = mItems.get(position);
+        Location shop = mItems.get(position);
 
-        holder.streetView.setText(shop.getStreet());
-        holder.workTimeView.setText(shop.getWorkTime());
-        holder.distanceView.setText(String.format(mContext.getString(R.string.DISTANCE), shop.getDistance()));
+        if (shop.getAddress() != null) {
+            if (shop.getAddress().length() == 0) {
+                holder.streetView.setText(mContext.getString(R.string.UNKNOWN_STREET));
+            } else {
+                holder.streetView.setText(shop.getAddress());
+            }
+        }
+
+        if (shop.getWorkingTime() != null) {
+            if (shop.getWorkingTime().length() == 0) {
+                holder.workTimeView.setText(mContext.getString(R.string.UNKNOWN_WORK_TIME));
+            } else {
+                holder.workTimeView.setText(shop.getWorkingTime());
+            }
+        }
+
+        if (mUserLocation != null) {
+            holder.distanceView.setText(String.format(mContext.getString(R.string.DISTANCE), (int) Util.getDistance(mUserLocation.getLatitude(), mUserLocation.getLongitude(), shop.getCoordinates().getLatitude(), shop.getCoordinates().getLongitude())));
+        } else {
+            holder.distanceView.setText(String.format(mContext.getString(R.string.DISTANCE), -1));
+        }
     }
 
     @Override
@@ -78,12 +100,17 @@ public class ShopsAdapter extends BindBaseAdapter {
         return position;
     }
 
-    public void refreshItems(List<Shop> items) {
+    public void refreshItems(List<Location> items) {
         if (items == null) {
             throw new NullPointerException("Items must be not null");
         }
 
         mItems = items;
+        notifyDataSetChanged();
+    }
+
+    public void updateUserPosition(Position newPosition) {
+        mUserLocation = newPosition;
         notifyDataSetChanged();
     }
 

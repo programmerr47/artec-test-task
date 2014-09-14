@@ -3,39 +3,28 @@ package com.github.programmerr47.artec_test_task.api;
 import com.github.programmerr47.artec_test_task.api.objects.RequestObject;
 import com.github.programmerr47.artec_test_task.api.parsers.ParserTo;
 
-import org.apache.http.HttpConnection;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Michael Spitsin
  * @since 2014-09-13
  */
-public class MakePOSTRequest<Obj extends RequestObject, ParseResult> {
+public class MakePOSTRequest<Obj extends RequestObject, ObjectTag, ArrayTag> {
     private static final int TIMEOUT_MILLIS = 10000;
 
     private String contentType;
-    private ParserTo<Obj, ParseResult> parser;
+    private ParserTo<Obj, ObjectTag, ArrayTag> parser;
     private Obj object;
     private String url;
 
@@ -44,7 +33,7 @@ public class MakePOSTRequest<Obj extends RequestObject, ParseResult> {
         return this;
     }
 
-    public MakePOSTRequest setParser(ParserTo<Obj, ParseResult> parser) {
+    public MakePOSTRequest setParser(ParserTo<Obj, ObjectTag, ArrayTag> parser) {
         this.parser = parser;
         return this;
     }

@@ -1,11 +1,9 @@
-package com.github.programmerr47.artec_test_task.api.parsers.jsonparsers;
+package com.github.programmerr47.artec_test_task.api.parsers.jsonparsers.to;
 
 import com.github.programmerr47.artec_test_task.api.objects.Radius;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.List;
 
 /**
  * @author Michael Spitsin

@@ -2,9 +2,11 @@
 <resources>
 
     <string name="app_name">artec-test-task</string>
-    <string name="SHOP_NAME">Shop "Svyaznoy"</string>
+    <string name="SHOP_NAME">Shop \"Svyaznoy\"</string>
     <string name="DISTANCE">%1$s m</string>
     <string name="UNKNOWN_STREET">Unknown street</string>
     <string name="UNKNOWN_WORK_TIME">Unknown work time</string>
+    <string name="GPS_ENABLED">GPS enabled</string>
+    <string name="GPS_DISABLED">GPS disabled</string>
 
 </resources>

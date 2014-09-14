@@ -1,4 +1,4 @@
-package com.github.programmerr47.artec_test_task.api.util;
+package com.github.programmerr47.artec_test_task.api.utils;
 
 /**
  * @author Michael Spitsin

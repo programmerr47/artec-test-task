@@ -5,7 +5,7 @@ package com.github.programmerr47.artec_test_task.api.objects;
  * @since 2014-09-13
  */
 @SuppressWarnings("unused")
-public class Position implements RequestObject {
+public class Position implements RequestObject, ResponseObject {
     private double latitude;
     private double longitude;
 

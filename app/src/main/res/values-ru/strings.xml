@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="SHOP_NAME">Магазин "Связной"</string>
+    <string name="SHOP_NAME">Магазин \"Связной\"</string>
     <string name="DISTANCE">%1$s м</string>
     <string name="UNKNOWN_STREET">Неизвестная улица</string>
     <string name="UNKNOWN_WORK_TIME">Неизвестное время работы</string>
+    <string name="GPS_ENABLED">GPS включен</string>
+    <string name="GPS_DISABLED">GPS выключен</string>
 
 </resources>
